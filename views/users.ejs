@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/lib/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <script src="/lib/jquery/dist/jquery.js"></script>
+  <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-3"><img src="<%=user.image%>">
+        <%if(user.twitter){%>
+          <img src="<%=user.twitter.image%>">
+          <%}%>
+            <h2><%=user.displayName%></h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Tweets</h2>
+        <ul class='list-unstyled'>
+
+          <%for(var x = 0; x<twitter.length; x++){%>
+            <li>
+              <blockquote>
+                <p>
+                  <a href="http://twitter.com/<%=twitter[x].user.screen_name%>/status/<%=twitter[x].id_str%>">
+                    <%=twitter[x].text%></a>
+                </p>
+                <footer><cite title="Source Title"><%=twitter[x].user.name%></cite></footer>
+              </blockquote>
+
+            </li>
+            <%}%>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h2>Mentions</h2>
+          <ul class='list-unstyled'>
+
+          <%for(var x = 0; x<mentions.length; x++){%>
+            <li>
+              <blockquote>
+                <p>
+                  <a href="http://twitter.com/<%=mentions[x].user.screen_name%>/status/<%=mentions[x].id_str%>">
+                    <%=mentions[x].text%></a>
+                </p>
+                <footer><cite title="Source Title"><%=mentions[x].user.name%></cite></footer>
+              </blockquote>
+
+            </li>
+            <%}%>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h2>Friends</h2>
+          <ul class='list-unstyled'>
+
+            <%for(var x = 0; x<friends.length; x++){%>
+              <li>
+                <img src="<%=friends[x].profile_image_url%>">
+                <a href="http://twitter.com/<%=friends[x].screen_name%>"><%=friends[x].name%></a>
+              </li>
+              <%}%>
+          </ul>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
